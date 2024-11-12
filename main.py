@@ -1,9 +1,9 @@
-import json 
+import json # Подключение библиотеки
 
-with open("cars.json", 'r', encoding='utf-8') as file: 
-    data = json.load(file) 
+with open("cars.json", 'r', encoding='utf-8') as file:  
+    data = json.load(file) # Считываем из файла
 
-count = 0 
+count = 0 # Для подсчёта выполненных операций
 
 while True:
     print("""
@@ -16,7 +16,7 @@ while True:
 
     numb = int(input("Введите номер действия: "))
 
-    if numb == 1:
+    if numb == 1: # Выводим все записи
         for car in data:
             print(f"""
             Номер записи: {car['id']}, 
@@ -27,7 +27,7 @@ while True:
             """)
         count += 1
 
-    elif numb == 2:
+    elif numb == 2: # Выводим выбранную запись
         id = int(input("Введите номер записи машины: "))
         find = False    
 
@@ -48,7 +48,7 @@ while True:
         if not find:
             print("Запись не найдена.")
  
-    elif numb == 3:
+    elif numb == 3: # Добавление новой записи
         id = int(input("Введите номер машины: "))
         
         find = False
@@ -80,7 +80,7 @@ while True:
 
         count += 1
 
-    elif numb == 4:
+    elif numb == 4: # Удаляем запись
         id = int(input("Введите номер записи: "))
         find = False  
 
@@ -98,10 +98,14 @@ while True:
             print("Запись успешно удалена.")
         count += 1
 
-    elif numb == 5:
+    elif numb == 5: # Завершаем программу
         print(f"""Программа завершена.
                Кол-во операций: {count}""") 
         break
+
+
     else:
         print("Такого номера нет.")
+
+
         
