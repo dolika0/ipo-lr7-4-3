@@ -1,6 +1,6 @@
 import json # Подключение библиотеки
 
-with open("cars.json", 'r', encoding='utf-8') as file:  
+with open("C:/Users/ASUS/Desktop/lr7/cars.json", 'r', encoding='utf-8') as file:  
     data = json.load(file) # Считываем из файла
 
 count = 0 # Для подсчёта выполненных операций
@@ -74,7 +74,7 @@ while True:
             }
 
             data.append(new_car) 
-            with open("cars.json", 'w', encoding='utf-8') as out_file: 
+            with open("C:/Users/ASUS/Desktop/lr7/cars.json", 'w', encoding='utf-8') as out_file: 
                 json.dump(data, out_file)
             print("Машина успешно добавлена.")
 
@@ -93,14 +93,14 @@ while True:
         if not find:
             print("Запись не найдена.")
         else:
-            with open("cars.json", 'w', encoding='utf-8') as out_file:
+            with open("C:/Users/ASUS/Desktop/lr7/cars.json", 'w', encoding='utf-8') as out_file:
                 json.dump(data, out_file)
             print("Запись успешно удалена.")
         count += 1
 
     elif numb == 5: # Завершаем программу
         print(f"""Программа завершена.
-               Кол-во операций: {count}""") 
+        Кол-во операций: {count}""") 
         break
 
 
