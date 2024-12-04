@@ -69,7 +69,21 @@ while True:
         else:
             new_name = input("Введите название модели: ")  
             new_manufacturer  = input("Введите производителя: ")  
-            new_is_petrol = input("Введите,заправляется ли бензиноом (yes/no): ")  
+
+            while True:
+                numb = input("Введите,заправляется ли бензином (1 - да/ 2 - нет): ")
+                if numb.isdigit():
+                    numb = int(numb)
+                    if numb == 1:
+                        new_is_petrol = 'да'
+                        break
+                    elif numb == 2:
+                        new_is_petrol = 'нет'
+                        break
+                else :
+                    print("Введите одно из предложенных чисел!")
+                
+
             new_tank_volume = float(input("Введите объём бака: "))  
 
             new_car = {
@@ -114,5 +128,6 @@ while True:
     else:
         print("Число должно быть от 1 до 5!")
 
+    
 
         
