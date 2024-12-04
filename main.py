@@ -1,6 +1,6 @@
 import json # Подключение библиотеки
 
-with open("C:/Users/ASUS/Desktop/lr7/cars.json", 'r', encoding='utf-8') as file:  
+with open("cars.json", 'r', encoding='utf-8') as file:  
     data = json.load(file) # Считываем из файла
 
 count = 0 # Для подсчёта выполненных операций
@@ -14,9 +14,17 @@ while True:
        5: Выйти из программы
     """)
 
-    numb = int(input("Введите номер действия: "))
+    while True:
+        numb = input("Введите номер действия: ")
+        if numb.isdigit():
+            numb = int(numb)
+            break
+        else: 
+            print("Введите число!(цифрой)")
+
 
     if numb == 1: # Выводим все записи
+        print("Все записи:".center(30,'~'))
         for car in data:
             print(f"""
             Номер записи: {car['id']}, 
@@ -27,27 +35,26 @@ while True:
             """)
         count += 1
 
-    elif numb == 2: # Выводим выбранную запись
-        id = int(input("Введите номер записи машины: "))
-        find = False    
-
+    elif numb == 2:
+        id = input("Введите номер записи: ")
+        find = False
         for car in data:
             if id == car['id']:
+                print("")
                 print(f"""
-                Номер записи: {car['id']}, 
-                Название модели: {car['name']},                       
-                Название производителя: {car['manufacturer']}, 
-                Заправляется ли бензином: {car['is_petrol']},    
-                Объем бака: {car['tank_volume']} 
+                Номер записи: {car['id']},
+                Общее название: {car['name']},
+                Название производителя: : {car['manufacturer']},
+                Заправляется ли бензином: {car['is_petrol']},
+                Объем бака: {car['tank_volume']}
                 """)
-                find = True  
-                break  
-
+                find = True
+                break
         count += 1
-
         if not find:
             print("Запись не найдена.")
- 
+
+
     elif numb == 3: # Добавление новой записи
         id = int(input("Введите номер машины: "))
         
@@ -74,7 +81,7 @@ while True:
             }
 
             data.append(new_car) 
-            with open("C:/Users/ASUS/Desktop/lr7/cars.json", 'w', encoding='utf-8') as out_file: 
+            with open("cars.json", 'w', encoding='utf-8') as out_file: 
                 json.dump(data, out_file)
             print("Машина успешно добавлена.")
 
@@ -93,7 +100,7 @@ while True:
         if not find:
             print("Запись не найдена.")
         else:
-            with open("C:/Users/ASUS/Desktop/lr7/cars.json", 'w', encoding='utf-8') as out_file:
+            with open("cars.json", 'w', encoding='utf-8') as out_file:
                 json.dump(data, out_file)
             print("Запись успешно удалена.")
         count += 1
@@ -105,7 +112,7 @@ while True:
 
 
     else:
-        print("Такого номера нет.")
+        print("Число должно быть от 1 до 5!")
 
 
         
