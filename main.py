@@ -24,7 +24,8 @@ while True:
 
 
     if numb == 1: # Выводим все записи
-        print("Все записи:".center(30,'~'))
+
+        print(" Все записи: ".center(60,'~'))
         for car in data:
             print(f"""
             Номер записи: {car['id']}, 
@@ -35,8 +36,16 @@ while True:
             """)
         count += 1
 
-    elif numb == 2:
-        id = input("Введите номер записи: ")
+    elif numb == 2: # Выводим определенную запись
+
+        while True:
+            id = input("Введите номер записи: ")
+            if id.isdigit():
+                id = int(id)
+                break
+            else: 
+                print("Введите номер записи цифрой!")
+        
         find = False
         for car in data:
             if id == car['id']:
@@ -50,14 +59,23 @@ while True:
                 """)
                 find = True
                 break
+
         count += 1
-        if not find:
-            print("Запись не найдена.")
+
+        if not find: 
+            print(" Запись не найдена ".center(60, "~"))
 
 
     elif numb == 3: # Добавление новой записи
-        id = int(input("Введите номер машины: "))
-        
+
+        while True:
+            id = input("Введите номер машины: ")
+            if id.isdigit():
+                id = int(id)
+                break
+            else: 
+                print("Введите номер машины цифрой!")
+
         find = False
         for car in data:
             if car['id'] == id:
@@ -80,11 +98,19 @@ while True:
                     elif numb == 2:
                         new_is_petrol = 'нет'
                         break
+                    # else :
+                    #     print("Введите одно из предложенных чисел!")
                 else :
-                    print("Введите одно из предложенных чисел!")
+                    print("Вы должны ввести число!(1 - заправляется бензином, 2 - не заправляется)")
                 
-
-            new_tank_volume = float(input("Введите объём бака: "))  
+            while True:
+                new_tank_volume = input("Введите объём бака(целым числом): ")
+                if new_tank_volume.isdigit():
+                    new_tank_volume = int(new_tank_volume)
+                    break
+                else: 
+                    print("Введите объём бака целым числом!")
+           
 
             new_car = {
                 'id': id,
@@ -127,7 +153,3 @@ while True:
 
     else:
         print("Число должно быть от 1 до 5!")
-
-    
-
-        
