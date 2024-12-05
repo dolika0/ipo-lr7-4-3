@@ -4,7 +4,7 @@ with open("cars.json", 'r', encoding = 'utf-8') as file:
     data = json.load(file) # Перевод из json в python object
 
 count = 0 
-openWhile = True
+start = True
 
 def menu():
     print("""
@@ -75,23 +75,23 @@ def new():
             find = True
             break
         
-        if find: 
-            print("Такой номер уже существует.")
+    if find: 
+        print("Такой номер уже существует.")
 
-        else:
-            new_name = input("Введите название модели: ")  
-            new_manufacturer  = input("Введите производителя: ")
+    else:
+        new_name = input("Введите название модели: ")  
+        new_manufacturer  = input("Введите производителя: ")
 
-            while True:
-                numb = input("Введите,заправляется ли бензином (1 - да/ 2 - нет): ")
-                if numb.isdigit():
-                    numb = int(numb)
-                    if numb == 1:
-                        new_is_petrol = 'да'
-                        break
-                    elif numb == 2:
-                        new_is_petrol = 'нет'
-                        break
+        while True:
+            numb = input("Введите,заправляется ли бензином (1 - да/ 2 - нет): ")
+            if numb.isdigit():
+                numb = int(numb)
+                if numb == 1:
+                    new_is_petrol = 'да'
+                    break
+                elif numb == 2:
+                    new_is_petrol = 'нет'
+                    break
         
                 else :
                     print("Вы должны ввести число!(1 - заправляется бензином, 2 - не заправляется)")
@@ -149,12 +149,12 @@ def del_id():
 
 def exit():
     global count
-    global openWhile
+    global start
     print(f"Программа завершена.Количество операций: {count}")
-    openWhile  = False
+    start = False
         
 def main():
-    while openWhile:
+    while start:
         menu()
 
         while True:
