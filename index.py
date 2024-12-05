@@ -43,7 +43,7 @@ def index():
     find = False
     for car in data:
         if id == car['id']:
-            print(" Выбранная запись: ".center(60,' '))
+            print("\n Выбранная запись: ".center(60,' '))
             print(f"""
             Номер записи: {car['id']},
             Общее название: {car['name']},
@@ -83,7 +83,7 @@ def new():
         new_manufacturer  = input("Введите производителя: ")
 
         while True:
-            numb = input("Введите,заправляется ли бензином (1 - да/ 2 - нет): ")
+            numb = input("Введите, заправляется ли бензином (1 - да/ 2 - нет): ")
             if numb.isdigit():
                 numb = int(numb)
                 if numb == 1:
@@ -92,17 +92,20 @@ def new():
                 elif numb == 2:
                     new_is_petrol = 'нет'
                     break
-        
                 else :
                     print("Вы должны ввести число!(1 - заправляется бензином, 2 - не заправляется)")
+            else : 
+                pass
 
-            while True:
-                new_tank_volume = input("Введите объём бака(целым числом): ")
-                if new_tank_volume.isdigit():
-                    new_tank_volume = int(new_tank_volume)
-                    break
-                else: 
-                    print("Введите объём бака целым числом!")  
+
+        while True:
+            new_tank_volume = input("Введите объём бака(целым числом): ")
+            if new_tank_volume.isdigit():
+                new_tank_volume = int(new_tank_volume)
+                break
+            else: 
+                print("Введите объём бака целым числом!")  
+                    
 
             new_car = {
                 'id': id,
@@ -112,11 +115,11 @@ def new():
                 'tank_volume':  new_tank_volume
             }
 
-            data.append(new_car) 
-            with open("cars.json", 'w', encoding = 'utf-8') as out_file: 
-                json.dump(data, out_file)
-            print("Машина успешно добавлена.")
-            break
+        data.append(new_car) 
+        with open("cars.json", 'w', encoding = 'utf-8') as out_file: 
+            json.dump(data, out_file)
+        print("Машина успешно добавлена.")
+        # break
             
     count += 1
 
@@ -144,7 +147,7 @@ def del_id():
     else:
         with open("cars.json", 'w', encoding = 'utf-8') as out_file:
             json.dump(data, out_file)
-        print("Запись успешно удалена.") 
+        print("Запись успешно удалена.".center(60, '=')) 
     count += 1
 
 def exit():
