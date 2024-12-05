@@ -147,7 +147,7 @@ def del_id():
     else:
         with open("cars.json", 'w', encoding = 'utf-8') as out_file:
             json.dump(data, out_file)
-        print("Запись успешно удалена.") 
+        print("Запись успешно удалена.".center(60, '=')) 
     count += 1
 
 def exit():
