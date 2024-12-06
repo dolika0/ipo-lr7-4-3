@@ -3,9 +3,8 @@ import json
 with open("cars.json", 'r', encoding = 'utf-8') as file: 
     data = json.load(file) # Перевод из json в python object
 
-count = 0 
 start = True
-
+count = 0
 def menu():
     print("""
        1: Вывести все записи 
@@ -18,7 +17,7 @@ def menu():
 
 def all():
     global count
-    print(" Все записи: ".center(60,' '))
+    print(" Все записи: ".center(60,'~'))
     for car in data:
             print(f"""
             Номер записи: {car['id']}, 
@@ -29,9 +28,10 @@ def all():
             """)
     count += 1
 
+
+
 def index():
     global count
-    
     while True:
         id = input("Введите номер записи: ")
         if id.isdigit():
@@ -53,11 +53,11 @@ def index():
             """)
             find = True
             break
-
         count += 1
+        
 
     else: 
-        print(" Запись не найдена ".center(60, "~"))
+        print("\n Запись не найдена ".center(60, "~"))
 
 def new():
     global count
@@ -95,7 +95,7 @@ def new():
                 else :
                     print("Вы должны ввести число!(1 - заправляется бензином, 2 - не заправляется)")
             else : 
-                pass
+                print("Введите число (1 или 2)!")
 
 
         while True:
@@ -107,25 +107,22 @@ def new():
                 print("Введите объём бака целым числом!")  
                     
 
-            new_car = {
-                'id': id,
-                'name': new_name,
-                'manufacturer':  new_manufacturer,
-                'is_petrol': True if new_is_petrol.lower() == 'да' else False, 
-                'tank_volume':  new_tank_volume
-            }
+        new_car = {
+            'id': id,
+            'name': new_name,
+            'manufacturer':  new_manufacturer,
+            'is_petrol': True if new_is_petrol.lower() == 1 else False, 
+            'tank_volume':  new_tank_volume
+        }
 
         data.append(new_car) 
         with open("cars.json", 'w', encoding = 'utf-8') as out_file: 
             json.dump(data, out_file)
         print("Машина успешно добавлена.")
-        # break
-            
     count += 1
 
 def del_id():
     global count
-
     while True:
         id = input("Введите номер записи для удаления: ")
         if id.isdigit():
@@ -140,7 +137,7 @@ def del_id():
         if id == car['id']:
             data.remove(car) # Удаление 
             find = True  
-            break 
+            break
 
     if not find:
         print("Запись не найдена.")
@@ -151,7 +148,6 @@ def del_id():
     count += 1
 
 def exit():
-    global count
     global start
     print(f"Программа завершена.Количество операций: {count}")
     start = False
