@@ -46,8 +46,7 @@ def all():
 
 def index():
     global count
-    id = input("Введите номер записи: ")
-    validation(id)
+    validation()
         
     find = False
     for car in data:
@@ -70,13 +69,8 @@ def index():
 
 def new():
     global count
-    while True:
-        id = input("Введите номер записи машины: ")
-        if id.isdigit():
-            id = int(id)
-            break
-        else: 
-            print("Введите номер записи машины цифрой!")
+    id = validation()
+    
         
     find = False
     for car in data:
@@ -107,13 +101,9 @@ def new():
                 print("Введите число (1 или 2)!")
 
 
-        while True:
-            new_tank_volume = input("Введите объём бака(целым числом): ")
-            if new_tank_volume.isdigit():
-                new_tank_volume = int(new_tank_volume)
-                break
-            else: 
-                print("Введите объём бака целым числом!")  
+        
+        new_tank_volume = input(" Введите объём бака(целым числом): ")
+        validation(new_tank_volume)
                     
 
         new_car = {
