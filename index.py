@@ -57,7 +57,7 @@ def index():
         
 
     else: 
-        print("\n Запись не найдена ".center(60, "~"))
+        print("\n"," Запись не найдена ".center(60, "~"))
 
 def new():
     global count
