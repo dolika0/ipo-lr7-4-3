@@ -3,6 +3,20 @@ import json
 with open("cars.json", 'r', encoding = 'utf-8') as file: 
     data = json.load(file) # Перевод из json в python object
 
+def validation(num):
+    find = True
+    
+    while(find):
+        num = input("Введите номер :")
+        if num.isdigit():
+            num = int(num)
+            find = False
+            return num
+        else: 
+            print("Введите номер записи цифрой!")
+            
+        
+
 start = True
 count = 0
 def menu():
@@ -32,13 +46,8 @@ def all():
 
 def index():
     global count
-    while True:
-        id = input("Введите номер записи: ")
-        if id.isdigit():
-            id = int(id)
-            break
-        else: 
-            print("Введите номер записи цифрой!")
+    id = input("Введите номер записи: ")
+    validation(id)
         
     find = False
     for car in data:
