@@ -2,7 +2,7 @@ import json
 with open("cars.json", 'r', encoding = 'utf-8') as file: 
     data = json.load(file) # Перевод из json в python object
 
-def validation(prompt,input_type = int):
+def validation(prompt):
     while(True):
         num = input(prompt)
         if num.isdigit():
